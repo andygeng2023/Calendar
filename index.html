@@ -3,34 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple calendar app with events stored in your browser.">
   <title>Calendar</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="calendar-app">
-    <h1>October 2026</h1>
-    <p>My first calendar app.</p>
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">My Calendar</p>
+        <h1 id="month-title"></h1>
+      </div>
+      <button id="today" class="secondary-button">Today</button>
+    </header>
 
-    <div class="controls">
-      <button id="previous">Previous</button>
-      <button id="next">Next</button>
+    <div class="controls" aria-label="Calendar navigation">
+      <button id="previous" class="nav-button" aria-label="Previous month">←</button>
+      <button id="next" class="nav-button" aria-label="Next month">→</button>
     </div>
 
-    <div class="calendar">
-      <div class="day-name">Mon</div>
-      <div class="day-name">Tue</div>
-      <div class="day-name">Wed</div>
-      <div class="day-name">Thu</div>
-      <div class="day-name">Fri</div>
-      <div class="day-name">Sat</div>
-      <div class="day-name">Sun</div>
+    <section class="calendar-wrapper" aria-label="Monthly calendar">
+      <div class="calendar" id="calendar"></div>
+    </section>
 
-      <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div><div>7</div>
-      <div>8</div><div>9</div><div>10</div><div>11</div><div>12</div><div>13</div><div>14</div>
-      <div>15</div><div>16</div><div>17</div><div>18</div><div>19</div><div>20</div><div>21</div>
-      <div>22</div><div>23</div><div>24</div><div>25</div><div>26</div><div>27</div><div>28</div>
-      <div>29</div><div>30</div><div>31</div>
-    </div>
+    <section class="event-panel" aria-labelledby="event-heading">
+      <h2 id="event-heading">Add an event</h2>
+      <form id="event-form">
+        <label>
+          Event title
+          <input id="event-title" type="text" maxlength="80" placeholder="e.g. Homework" required>
+        </label>
+        <label>
+          Date
+          <input id="event-date" type="date" required>
+        </label>
+        <label>
+          Time
+          <input id="event-time" type="time">
+        </label>
+        <label>
+          Description
+          <textarea id="event-description" maxlength="300" rows="3" placeholder="Optional"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="submit">Add event</button>
+          <button type="button" id="clear-events" class="danger-button">Clear all events</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="events-list" aria-labelledby="events-heading">
+      <h2 id="events-heading">Events for selected day</h2>
+      <div id="events"></div>
+    </section>
   </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
